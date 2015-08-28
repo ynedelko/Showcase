@@ -20,7 +20,7 @@ post('/bands') do
 end
 
 #adds venue, added venue shows up on homepage
-post('/venue') do
+post('/venues') do
   name = params.fetch("name")
   venue = Venue.new({:name => name})
   venue.save()
@@ -44,7 +44,7 @@ patch('/bands/:id') do
 end
 
 #deleting a band, then going back to the homepage
-delete('/bands/:id/delete') do
+delete('/bands/:id') do
   id = params.fetch("id").to_i()
   @band = Band.find(id)
   @band.destroy()
@@ -69,7 +69,7 @@ post('/bands/:id/new') do
 end
 
 #going to a specific venue detail page
-get('/venue/:id') do
+get('/venues/:id') do
   @venue = Venue.find(params.fetch("id").to_i())
   @venues = Venue.all()
   erb(:venue_detail)

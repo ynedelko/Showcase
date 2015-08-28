@@ -6,7 +6,7 @@
   <button type="submit" class="btn btn-info btn-xs">Rename <%=@band.name() %></button>
 </form>
 
-<form action='/bands/<%= @band.id() %>/delete' method='post'>
+<form action='/bands/<%= @band.id() %>' method='post'>
   <input type="hidden" name='_method' value='delete'>
   <button type='submit' class="btn btn-danger btn-xs">Delete <%= @band.name %></button>
 </form>
@@ -15,7 +15,7 @@
 <br>
 <ul>
   <% @band.venues.each() do |venue| %>
-    <li> <a href="/venue/<%= venue.id() %>"><%= venue.name() %></a></li>
+    <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
   <% end %>
 </ul>
 <h4>Add venues where <%= @band.name %> has played:</h4>

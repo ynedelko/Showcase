@@ -20,11 +20,11 @@
 
 <ul>
   <% @venues.each() do |venue| %>
-  <li> <a href="/venue/<%= venue.id() %>"><%= venue.name() %></a></li>
+  <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
   <% end %>
 </ul>
 <br>
-<form action="/venue" method="post">
+<form action="/venues" method="post">
   <input id="name" name="name" type="text">
 
   <button type="submit" class="btn btn-success btn-xs">add a venue</button>
