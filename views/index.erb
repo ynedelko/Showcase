@@ -1,0 +1,19 @@
+<h1>It's Showtime!</h1>
+
+<h2>Bands</h2>
+<h6>Add bands, then click on bands to edit or delete</h6>
+
+<ul>
+  <% @bands.each() do |band| %>
+  <li> <a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
+  <% end %>
+</ul>
+<br>
+<form action="/bands" method="post">
+  <input id="name" name="name" type="text">
+
+  <button type="submit" class="btn btn-success btn-xs">add a band</button>
+</form>
+
+<br>
+<h4>Click on band to edit or delete</h4>
