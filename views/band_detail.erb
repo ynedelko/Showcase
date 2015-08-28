@@ -3,14 +3,26 @@
 <form action="/bands/<%= @band.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
   <input id="name" name="name" type="text">
-
-  <button type="submit" class="btn btn-info btn-xs">Rename band: <%=@band.name() %></button>
+  <button type="submit" class="btn btn-info btn-xs">Rename <%=@band.name() %></button>
 </form>
-<br>
-<br>
+
 <form action='/bands/<%= @band.id() %>/delete' method='post'>
   <input type="hidden" name='_method' value='delete'>
-  <button type='submit' class="btn btn-warning btn-xs">Delete band: <%= @band.name %></button>
+  <button type='submit' class="btn btn-danger btn-xs">Delete <%= @band.name %></button>
 </form>
 <br>
-<a href="/" class="btn btn-success btn-xs">Back to Homepage</a>
+<h2><%= @band.name %> Venues</h2>
+<br>
+<ul>
+  <% @band.venues.each() do |venue| %>
+    <li> <a href="/venue/<%= venue.id() %>"><%= venue.name() %></a></li>
+  <% end %>
+</ul>
+<h4>Add venues where <%= @band.name %> has played:</h4>
+<form action="/bands/<%= @band.id() %>/new" method="post">
+  <input id="name" name="name" type="text">
+  <button type="submit" class="btn btn-success btn-xs">add a venue</button>
+</form>
+<br>
+<br>
+<a href="/">Back to Homepage</a>
