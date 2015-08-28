@@ -58,19 +58,40 @@ get('/bands/:id') do
   erb(:band_detail)
 end
 
-#adds new venue to band
+#adds new venue to a particular band
 post('/bands/:id/new') do
-  name = params.fetch("name")
-  band_id = params.fetch("id").to_i()
+  new_venue_name = params.fetch("name")
+  band_id = params.fetch("id").to_i
   band = Band.find(band_id)
-  new_venue = Venue.create({:name => name})
-  band.venues.push(new_venue)
+  new_venue = Venue.find_or_create_by({:name => new_venue_name.capitalize()})
+    if
+      band.venues().find_by({:name => new_venue_name})
+    else
+      band.venues.push(new_venue)
+    end
   redirect back
 end
+#adds new venue to band
+# post('/bands/:id/new') do
+#   name = params.fetch("name")
+#   band_id = params.fetch("id").to_i()
+#   band = Band.find(band_id)
+#   new_venue = Venue.create({:name => name})
+#   band.venues.push(new_venue)
+#   redirect back
+# end
 
 #going to a specific venue detail page
 get('/venues/:id') do
   @venue = Venue.find(params.fetch("id").to_i())
   @venues = Venue.all()
   erb(:venue_detail)
+end
+
+#deleting a venue, then going back to the homepage
+delete('/venues/:id') do
+  id = params.fetch("id").to_i()
+  @venue = Venue.find(id)
+  @venue.destroy()
+  redirect("/")
 end

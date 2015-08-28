@@ -1,5 +1,9 @@
-<h1>Bands that played at <%= @venue.name %></h1>
-
+<h1><%= @venue.name %></h1>
+<form action='/venues/<%= @venue.id() %>' method='post'>
+  <input type="hidden" name='_method' value='delete'>
+  <button type='submit' class="btn btn-danger btn-xs">Delete <%= @venue.name %></button>
+</form>
+<h2>Bands that played at <%= @venue.name %>:</h2>
 <ul>
   <% @venue.bands.each() do |band| %>
   <li><a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
