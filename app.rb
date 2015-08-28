@@ -24,6 +24,15 @@ get('/bands/:id') do
   erb(:band_detail)
 end
 
+#updating a band, then staying band detail page to see new name
+patch('/bands/:id') do
+  new_name = params.fetch("name")
+  id = params.fetch("id").to_i()
+  @band = Band.find(id)
+  @band.update({:name => new_name})
+  erb(:band_detail)
+end
+
 #deleting a band, then going back to the homepage
 delete('/bands/:id/delete') do
   id = params.fetch("id").to_i()
