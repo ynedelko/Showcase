@@ -11,18 +11,18 @@
   <button type='submit' class="btn btn-danger btn-xs">Delete <%= @band.name %></button>
 </form>
 <br>
-<h2><%= @band.name %> Venues</h2>
-<br>
+<h3><%= @band.name %> has played at the following venues:</h3>
 <ul>
   <% @band.venues.each() do |venue| %>
     <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
   <% end %>
 </ul>
-<h4>Add venues where <%= @band.name %> has played:</h4>
+<br>
+<h6>Add venues where <%= @band.name %> has played:</h6>
 <form action="/bands/<%= @band.id() %>/new" method="post">
   <input id="name" name="name" type="text">
   <button type="submit" class="btn btn-success btn-xs">add a venue</button>
 </form>
 <br>
 <br>
-<a href="/">Back to Homepage</a>
+<a href="/">Back to Showtime! Homepage</a>

@@ -16,8 +16,7 @@
 </form>
 
 <h2>Venues</h2>
-<h6>Add venues, then click on venues to see what bands have played there.</h6>
-
+<h6>Add venues, then click on venues to delete them or see what bands have played there.</h6>
 <ul>
   <% @venues.each() do |venue| %>
   <li> <a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
