@@ -1,6 +1,6 @@
 # _Showcase_
 
-##### This is an app to track bands and the venues where they've performed.
+##### It's Showtime! This is an app to track bands and the venues where they've performed.
 
 #### By _**Yelena Nedelko**_
 
